@@ -1,4 +1,4 @@
-# spritePng
+## spritePng
 A visible online tool to combine pictures into one
 
-just click hear
+Jusct click [HERE](https://faace.github.io/spritePng){:target="_blank"} :)

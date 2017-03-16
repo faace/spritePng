@@ -78,6 +78,19 @@ a {
     font-size: 16px;
 }
 
+
+.options .for-header {
+    padding: 10px 0 20px 0;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #bbb;
+}
+
+
+.options .for-size {
+    position: relative;
+}
 .options .for-size .size {
     width: 60px;
     font-size: 16px;
