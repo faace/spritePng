@@ -1,0 +1,300 @@
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: "Microsoft YaHei", "Consolas", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #fafafa;
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
+
+.main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 900px;
+    min-height: 800px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch
+}
+
+.main .workplace {
+    position: relative;
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    overflow-y: auto;
+    flex-shrink: 1;
+}
+
+.main .options {
+    position: relative;
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    flex-shrink: 0;
+    width: 400px;
+    background-color: rgba(224, 240, 232, 0.45);
+    padding: 10px;
+    border-left: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.options .for-size .size {
+    width: 60px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 3px 8px;
+}
+
+.options .auto-range {
+    float: right;
+    margin-top: -6px;
+}
+
+.options .one-line {
+    margin: 5px 0;
+}
+
+.options .set {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+
+.button {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 3px 20px;
+    margin-left: 16px;
+}
+
+.button:hover {
+    background-color: #f0f0f0;
+}
+
+.for-list {
+    margin: 10px 0;
+    border-top: 1px solid #bbb;
+    padding: 10px 0;
+}
+
+.for-list .drop_area {
+    border: 1px solid #bbb;
+    height: 400px;
+    margin-top: 8px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.for-list .drop_area .notice {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #aaa;
+}
+
+.for-create {
+    margin: 10px 0;
+    border-top: 1px solid #bbb;
+    padding: 10px 0;
+}
+
+.for-create div {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.for-create div .selected {
+    background-color: #e0e0e0;
+}
+
+.for-create div textarea {
+    width: 98%;
+    max-width: 98%;
+    min-width: 98%;
+    min-height: 30px;
+    padding: 1%;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.drop_area .is-ok {
+    background-color: #f0f0f0 !important;
+}
+
+.drop_area .is-fail {
+    background-color: #ffe0e0 !important;
+}
+
+.one {
+    width: 100%;
+    height: 60px;
+    position: relative;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #fff;
+    clear: both;
+}
+
+.one img {
+    border: 1px solid #bbb;
+    margin: 5px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.one .info {
+    margin-left: 60px;
+    padding: 10px 5px 5px;
+    width: 70%;
+    overflow: hidden;
+}
+
+.one .info .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.one .info .size {
+    color: #999;
+    font-size: 13px;
+}
+
+.one:hover .op {
+    display: block;
+}
+
+.one .op {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 14px;
+}
+
+.one .op span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+.one .op span:hover {
+    background-color: #f0f0f0;
+}
+
+.one .op .up:after {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 12px;
+    left: 10px;
+}
+
+.one .op .down:after {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    transform: rotate(135deg);
+    position: absolute;
+    top: 6px;
+    left: 10px;
+}
+
+.one .op .del:before {
+    content: " ";
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 16px;
+    left: 12px;
+}
+
+.one .op .del:after {
+    content: " ";
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    transform: rotate(135deg);
+    position: absolute;
+    top: 7px;
+    left: 12px;
+}
+
+canvas {
+    border: 1px solid #999;
+    margin: 5px;
+    padding: 5px;
+    -moz-box-sizing: border-box; /*Firefox3.5+*/
+    -webkit-box-sizing: border-box; /*Safari3.2+*/
+    -o-box-sizing: border-box; /*Opera9.6*/
+    -ms-box-sizing: border-box; /*IE8*/
+    box-sizing: border-box; /*W3C标准(IE9+，Safari5.1+,Chrome10.0+,Opera10.6+都符合box-sizing的w3c标准语法)*/
+}
