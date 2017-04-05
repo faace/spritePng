@@ -203,10 +203,17 @@ var app = new Vue({
             this.list.push(file);
             this.upateCanvas();
         },
-        getImageSize: function (target) {
+        getImageSize: function (target, cb) {
             var img = document.createElement('img');
             img.src = target;
-            return {width: img.naturalWidth, height: img.naturalHeight};
+            img.onload = function () {
+                img.onload = null;
+                cb({width: img.naturalWidth, height: img.naturalHeight});
+            }
+
+        },
+        clean: function () {
+            this.list = [];
         },
         autoRange: function () {
             var list = this.list, newList = [];
@@ -242,15 +249,18 @@ var app = new Vue({
                 reader.readAsDataURL(reader.file);
                 reader.onload = function () {
                     var finalResult = this.result; // 压缩
-                    var size = that.getImageSize(finalResult);
-                    var name = this.file.name.split('.');
-                    name.splice(name.length - 1, 1);
-                    that.pushImage({
-                        imgUrl: finalResult,
-                        name: name.join('.'),
-                        size: [size.width, size.height],
-                        sizeTxt: size.width + ' * ' + size.height //  + '/' + this.file.type.replace('image/', '')
+                    var theName = this.file.name;
+                    that.getImageSize(finalResult, function (size) {
+                        var name = theName.split('.');
+                        name.splice(name.length - 1, 1);
+                        that.pushImage({
+                            imgUrl: finalResult,
+                            name: name.join('.'),
+                            size: [size.width, size.height],
+                            sizeTxt: size.width + ' * ' + size.height //  + '/' + this.file.type.replace('image/', '')
+                        });
                     });
+
                 };
             }
         },

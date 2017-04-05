@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
     <script src="https://unpkg.com/vue@2.2.4/dist/vue.min.js"></script>
+
 </head>
 <body>
 
@@ -34,8 +35,10 @@
         </div>
         <div class="for-list">
 
-            <div>File list({{list.length}})
+            <div>
+                File list({{list.length}})
                 <span class="button auto-range" v-on:click.prevent="autoRange()">arrange by width</span>
+                <span class="button clean" v-on:click.prevent="clean()">clean</span>
             </div>
             <div class="drop_area" v-on:drop.prevent="getFiles">
                 <div class="one" v-for="(l, idx) in list" v-bind:class="{ 'is-ok': l.ok, 'is-fail':!l.ok }">

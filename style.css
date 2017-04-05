@@ -99,6 +99,12 @@ a {
     padding: 3px 8px;
 }
 
+.options .clean {
+    float: right;
+    margin-top: -6px;
+}
+
+
 .options .auto-range {
     float: right;
     margin-top: -6px;
@@ -111,15 +117,15 @@ a {
 .options .set {
     position: absolute;
     right: 10px;
-    top: 13px;
+    top: -2px;
 }
 
 .button {
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #fff;
     padding: 3px 20px;
-    margin-left: 16px;
+    margin-left: 10px;
 }
 
 .button:hover {
