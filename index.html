@@ -1,79 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>farain spritePng</title>
-    <meta name="author" content="faace QQ：5615830"/>
-    <link rel="stylesheet" type="text/css" href="./style.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <meta name="author" content="faace QQ：5615830" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./clipboard.min.js"></script>
     <script src="https://unpkg.com/vue@2.2.4/dist/vue.min.js"></script>
 
 </head>
+
 <body>
 
-<div class="main" id="main" v-on:dragleave.prevent="" v-on:drop.prevent="" v-on:dragenter.prevent=""
-     v-on:dragover.prevent="" style="display: none">
-    <div class="workplace">
-        <canvas width="640" height="640" v-on:drop.prevent="getFiles" id="theCanvas"></canvas>
-    </div>
-    <div class="options" id="options">
-        <div class="for-header">
-            <a class="button" href="https://github.com/faace/spritePng" target="_blank">View On GitHub</a>
+    <div class="main" id="main" v-on:dragleave.prevent="" v-on:drop.prevent="" v-on:dragenter.prevent="" v-on:dragover.prevent=""
+        style="display: none">
+        <div class="workplace">
+            <canvas width="640" height="640" v-on:drop.prevent="getFiles" id="theCanvas"></canvas>
         </div>
-
-
-
-        <div class="for-size">
-            <div class="one-line">
-                picutre size: <input class="size" type="number" placeholder="width" v-model="width" min="1"> *
-                <input class="size" type="number" placeholder="height" v-model="height" min="1"> px
+        <div class="options" id="options">
+            <div class="for-header">
+                <a class="button" href="https://github.com/faace/spritePng" target="_blank">View On GitHub</a>
             </div>
-            <div class="one-line">
-                padding: <input class="size" type="number" placeholder="padding" v-model="pad" min="0" max="100"> px
-            </div>
-            <span class="set button" v-on:click="changeSize()">set</span>
-        </div>
-        <div class="for-list">
 
-            <div>
-                File list({{list.length}})
-                <span class="button auto-range" v-on:click.prevent="autoRange()">arrange by width</span>
-                <span class="button clean" v-on:click.prevent="clean()">clean</span>
-            </div>
-            <div class="drop_area" v-on:drop.prevent="getFiles">
-                <div class="one" v-for="(l, idx) in list" v-bind:class="{ 'is-ok': l.ok, 'is-fail':!l.ok }">
-                    <img v-bind:src="l.imgUrl"/>
 
-                    <div class="info">
-                        <div class="name">{{l.name}}</div>
-                        <div class="size">size: {{l.sizeTxt}}</div>
-                    </div>
 
-                    <div class="op">
-                        <span class="up" v-on:click="itemUp(idx)" v-if="idx"></span>
-                        <span class="down" v-on:click="itemDown(idx)" v-if="idx < list.length -1"></span>
-                        <span class="del" v-on:click="itemDel(idx)"></span>
-                    </div>
+            <div class="for-size">
+                <div class="one-line">
+                    picutre size: <input class="size" type="number" placeholder="width" v-model="width" min="1"> *
+                    <input class="size" type="number" placeholder="height" v-model="height" min="1"> px
                 </div>
-                <div class="notice" v-if="list.length==0">{{notice}}</div>
+                <div class="one-line">
+                    padding: <input class="size" type="number" placeholder="padding" v-model="pad" min="0" max="100"> px
+                </div>
+                <span class="set button" v-on:click="changeSize()">set</span>
             </div>
-        </div>
-        <div class="for-create">
-            <div>
-                <span class="button" v-bind:class="{'selected':style==1}" v-on:click="select(1)">style1</span>
-                <span class="button" v-bind:class="{'selected':style==2}" v-on:click="select(2)">style2</span>
-                <span class="button" v-bind:class="{'selected':style==3}" v-on:click="select(3)">style3</span>
+            <div class="for-list">
+
+                <div>
+                    File list({{list.length}})
+                    <span class="button auto-range" v-on:click.prevent="autoRange()">arrange by width</span>
+                    <span class="button clean" v-on:click.prevent="clean()">clean</span>
+                </div>
+                <div class="drop_area" v-on:drop.prevent="getFiles">
+                    <div class="one" v-for="(l, idx) in list" v-bind:class="{ 'is-ok': l.ok, 'is-fail':!l.ok }">
+                        <img v-bind:src="l.imgUrl" />
+
+                        <div class="info">
+                            <div class="name">{{l.name}}</div>
+                            <div class="size">size: {{l.sizeTxt}}</div>
+                        </div>
+
+                        <div class="op">
+                            <span class="up" v-on:click="itemUp(idx)" v-if="idx"></span>
+                            <span class="down" v-on:click="itemDown(idx)" v-if="idx < list.length -1"></span>
+                            <span class="del" v-on:click="itemDel(idx)"></span>
+                        </div>
+                    </div>
+                    <div class="notice" v-if="list.length==0">{{notice}}</div>
+                </div>
             </div>
-            <div>
-                <textarea v-model="output" rows="10"></textarea>
-            </div>
-            <div>
-                <span class="button" id="copy">copy to clipboard</span>
+            <div class="for-create">
+                <div>
+                    <span class="button" v-bind:class="{'selected':style==1}" v-on:click="select(1)">style1</span>
+                    <span class="button" v-bind:class="{'selected':style==2}" v-on:click="select(2)">style2</span>
+                    <span class="button" v-bind:class="{'selected':style==3}" v-on:click="select(3)">style3</span>
+                </div>
+                <div>
+                    <textarea v-model="output" rows="10"></textarea>
+                </div>
+                <div>
+                    <span class="button" id="copy">copy to clipboard</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="./packImg.js"></script>
+    <script src="./packImg.js"></script>
 </body>
+
 </html>
